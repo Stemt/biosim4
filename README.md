@@ -16,23 +16,28 @@ I'll try to help if I can.
 Document Contents
 -----------------
 
-* [Code walkthrough](#CodeWalkthrough)
-* [Main data structures](#MainDataStructures)
-* [Config file](#ConfigFile)
-* [Program output](#ProgramOutput)
-* [Main program loop](#MainProgramLoop)
-* [Sensory inputs and action outputs](#SensoryInputsAndActionOutputs)
-* [Basic value types](#BasicValueTypes)
-* [Pheromones](#Pheromones)
-* [Useful utility functions](#UsefulUtilityFunctions)
-* [Installing the code](#InstallingTheCode)
-* [Building the executable](#BuildingTheExecutable)
-* [System requirements](#SystemRequirements)
-* [Compiling](#Compiling)
-* [Bugs](#Bugs)
-* [Execution](#Execution)
-* [Tools directory](#ToolsDirectory)
-* [Build log](#BuildLog)
+- [biosim4](#biosim4)
+  - [What is this?](#what-is-this)
+  - [Document Contents](#document-contents)
+  - [Code walkthrough<a name="CodeWalkthrough"></a>](#code-walkthrough)
+    - [Main data structures](#main-data-structures)
+    - [Config file](#config-file)
+    - [Program output](#program-output)
+    - [Main program loop](#main-program-loop)
+    - [Sensory inputs and action outputs](#sensory-inputs-and-action-outputs)
+    - [Basic value types](#basic-value-types)
+    - [Pheromones](#pheromones)
+    - [Useful utility functions](#useful-utility-functions)
+  - [## Installing the code](#-installing-the-code)
+  - [## Building the executable](#-building-the-executable)
+    - [System requirements](#system-requirements)
+    - [Compiling](#compiling)
+  - [## Bugs](#-bugs)
+  - [## Execution](#-execution)
+    - [if build with CodeBlocks or Makefile](#if-build-with-codeblocks-or-makefile)
+    - [if build with cmake](#if-build-with-cmake)
+  - [## Tools directory](#-tools-directory)
+  - [## Build log](#-build-log)
 
 
 Code walkthrough<a name="CodeWalkthrough"></a>
@@ -213,13 +218,19 @@ cimg-dev is replaced with version 2.8.4 or later.
 <a name="Compiling"></a>
 ### Compiling
 
-Two ways to compile:
+Three ways to compile:
 
 * The file named "biosim4.cbp" is a configuration file for the Code::Blocks IDE version 20.03.
 
 * A Makefile is provided which
 was created from biosim4.cbp with cbp2make, but is not tested. A default "make" will generate a debug and a
 release version.
+
+* Using cmake you can do the following
+  1. `mkdir build && cd build`
+  2. `cmake .. -DCImg_INCLUDE_DIRS=<path-to-dir-with-CImg.h>` you may need to the latest version of CImg. You can clone it [here](https://github.com/dtschump/CImg).
+  3. `make -j4`
+   
 
 <a name="Bugs"></a>
 ## Bugs
@@ -251,8 +262,14 @@ Edit the config file (default "biosim4.ini") for the parameters you want for the
 or Release executable in the bin directory. Optionally specify the name of the config file as the first
 command line argument, e.g.:
 
+### if build with CodeBlocks or Makefile
 ```
 ./bin/Release/biosim4 [biosim4.ini]
+```
+
+### if build with cmake
+```
+./biosim4 [../biosim4.ini]
 ```
 
 <a name="ToolsDirectory"></a>
